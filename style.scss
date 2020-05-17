@@ -1,0 +1,394 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #002233;
+  margin: 0;
+  overflow: hidden;
+}
+
+$border-size: 5px;
+$rotate: 60deg;
+
+:root {
+  --car-height: 10vh;
+  --gradient-size: 40px;
+  --shine-width: calc(var(--gradient-size) + 5px);
+  --shine-height: 80%;
+  //--color: rgba(112,132,200,1);
+  //--color: blue;
+  --color: #8c0000;
+  --color2: rgba(221,221,221,1);
+  animation: shine 0.5s linear infinite;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#car-container {
+  height: calc(var(--car-height) * 3);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#center-lines-container {
+  width: calc(var(--car-height) * 6);
+  height: 1%;
+  position: absolute;
+  left: calc(var(--car-height) * -2.2);
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+  padding: 0;
+}
+
+.center-line {
+  height: 100%;
+  background-color: white;
+  filter: drop-shadow(-0px -2px 1px rgba(0, 0, 0, 0.6));
+}
+
+#center-line1 {
+  width: calc(var(--car-height) * 1.2);
+  border-radius: 50%;
+}
+
+#center-line2 {
+  width: calc(var(--car-height) * 2.6);
+  border-radius: 85% 15% 10% 90% / 0% 0% 100% 100%;
+}
+
+.car-front {
+  width: calc(var(--car-height) * 3);
+  height: 100%;
+  background-color: var(--color);
+  border-radius: 30% 70% 70% 30% / 50% 5% 5% 50%;
+  box-shadow: inset 41px 0 20px -6px rgba(0, 0, 0, 0.74),
+  inset -38px 31px 34px 9px rgba(255, 255, 255, 0.25),
+  inset -28px -42px 20px -6px rgba(255, 255, 255, 0.6);
+}
+
+.car-center {
+  width: calc(var(--car-height) * 2.5);
+  height: 92%;
+  position: relative;
+  left: -2.5px;
+  background-color: var(--color);
+  box-shadow: inset 35px 1px 21px -3px rgba(255, 255, 255, 0.6),
+  inset -30px 0 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.car-back {
+  width: calc(var(--car-height) * 2);
+  height: 105%;
+  position: relative;
+  left: -5px;
+  background-color: var(--color);
+  border-radius: 80% 40% 40% 80% / 10% 50% 50% 10%;
+  box-shadow: inset -30px -1px 25px 14px rgba(0,0,0,0.45);
+}
+
+.car-hood {
+  width: 123%;
+  height: 87%;
+  top: 7%;
+  background-color: var(--color);
+  border-radius: 100% 0 0 100% / 45% 50% 50% 45%;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 16px 0 37px 0 #000000,
+              inset -4px 15px 37px -17px #000000,
+              inset -5px -50px 37px 30px rgba(255,255,255,0.6);
+}
+
+.car-windshield-container {
+  width: 100%;
+  height: 75%;
+  position: relative;
+  top: -75%;
+  left: 55%;
+  z-index: 4;
+}
+
+.car-windshield-1 {
+  width: 50%;
+  height: 100%;
+  background-color: black;
+  border-radius: 100% 0 0 100% / 45% 50% 50% 45%;
+  position: relative;
+  top: 0;
+}
+
+.car-windshield-2 {
+  width: 40%;
+  height: 100%;
+  background-color: black;
+  border-radius: 15% 100% 100% 15% / 50% 30% 30% 50%;
+  position: relative;
+  top: -100%;
+  left: 40%;
+}
+
+.roof-container {
+  width: calc(var(--car-height) * 3.45);
+  height: 95%;
+  position: relative;
+  top: 2.5%;
+  left: calc(var(--car-height) / 3);
+  z-index: 3;
+  padding: 0;
+}
+
+.car-roof-left {
+  height: 50%;
+  margin: 2px 0 0 0;
+  position: relative;
+  border-radius: 0 100% 100% 0 / 0 75% 0 0;
+  background-color: var(--color);
+  box-shadow: inset -20px 0px 20px 0 #000000,
+  15px 0px 20px 0 #000000,
+  inset -50px -32px 37px 50px rgba(0, 0, 0, 0.38),
+  inset 41px -7px 22px 1px rgba(255, 255, 255, 0.38);
+}
+
+.car-roof-center {
+  height: 60%;
+  width: 102%;
+  position: relative;
+  top: -30%;
+  z-index: 4;
+  border-radius: 0 100% 100% 0 / 0 25% 25% 0;
+  background: linear-gradient(
+                  30deg,
+                  var(--color2) 0,
+                  var(--color) 40%,
+                  var(--color) 100%
+  );
+  box-shadow: inset 90px -30px 50px -30px rgba(255, 255, 255, 0.65),
+  inset -50px 26px 50px -16px rgba(0, 0, 0, 0.6),
+  0px 2px 0px 0px rgba(0, 0, 0, 0.8),
+  0px -1px 0px 0px rgba(255, 255, 255, 0.8);
+}
+
+.car-roof-right {
+  height: 40%;
+  position: relative;
+  top: -50.5%;
+  border-radius: 0 100% 100% 0 / 0 0 75% 0;
+  background-color: var(--color);
+  box-shadow: inset -20px 0px 24px 0 #000000,
+  inset -45px 50px 40px -8px rgba(0, 0, 0, 0.9),
+  inset 50px -40px 10px 15px rgba(255, 255, 255, 0.5),
+  0px -1.5px 0px 0px rgba(255, 255, 255, 0.8);
+}
+
+#windows-container {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: -92.5%;
+  left: 32.5%;
+  z-index: 5;
+  padding: 5% 5%;
+  box-sizing: border-box;
+}
+
+.window {
+  width: 80%;
+  height: 15%;
+  background-color: black;
+}
+
+.roof-window {
+  width: 40%;
+  height: 25%;
+  position: relative;
+  left: 12.5%;
+  border-radius: 7.5px;
+}
+
+#window-left {
+  border-radius: 50% 50% 60% 40% / 30% 30% 70% 70%;
+  transform: rotate(2deg);
+  box-shadow: 1px 1px 0 1px rgba(255,255,255,0.7);
+}
+
+#window-roof-left {
+  transform: rotate(1deg);
+}
+
+#window-roof-right {
+  transform: rotate(-1deg);
+}
+
+#window-right {
+  border-radius: 50% 50% 60% 40% / 70% 70% 30% 30%;
+  transform: rotate(-2deg);
+}
+
+#lights-container {
+  width: calc(var(--shine-height) / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  left: calc(var(--shine-height) * 0.11);
+}
+
+.light {
+  height: var(--shine-height);
+  position: relative;
+  perspective: var(--shine-height);
+  z-index: -1;
+
+  &:before {
+    transition:all .3s linear;
+    width: calc(var(--shine-height) * 1);
+    height: calc(var(--shine-height) * 1.1);
+    content: "";
+    position: absolute;
+    background: radial-gradient(
+                    at right,
+                    rgba(163,246,246,1) 10%,
+                    rgba(255,255,255,0) 70%
+    );
+    top: 7.5px;
+  }
+
+  &:after {
+    transition: all 5s linear;
+    width: calc(var(--car-height) * 15);
+    height: calc(var(--shine-height) * 4);
+    content: "";
+    position: absolute;
+    background: radial-gradient(
+                    rgba(163, 195, 246, 0.25) 10%,
+                    rgba(163, 195, 246, 0.1) 50%,
+                    rgba(255, 255, 255, 0) 70%);
+    left: calc(var(--car-height) * -12);
+    top: -100%;
+  }
+
+  &:first-of-type {
+    transform: rotate(20deg);
+  }
+
+  &:last-of-type {
+    transform: rotate(-20deg);
+  }
+}
+
+#mirrors-container {
+  width: 20%;
+  height: 110%;
+  position: relative;
+  top: -167%;
+  left: 80%;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mirror {
+  width: 100%;
+  height: 10%;
+  background-color: var(--color);
+}
+
+#mirror-right {
+  border-radius: 85% 15% 60% 40% / 70% 5% 95% 30%;
+  box-shadow: inset 2px 0 5px 1px rgba(255, 255, 255, 0.7);
+
+  &:after {
+    width: 30%;
+    height: 10%;
+    content:  "";
+    position: absolute;
+    left: 66%;
+    top: -1%;
+    border-radius: 85% 15% 60% 40% / 70% 5% 95% 30%;
+    background: radial-gradient(
+                    circle,
+                    rgba(0, 0, 0, 0.6) 0,
+                    rgba(0, 0, 0, 0.3) 40%,
+                    rgba(0, 0, 0, 0.01) 65%
+    )
+  }
+}
+
+#mirror-left {
+  border-radius: 40% 60% 15% 85% / 30% 95% 5% 70%;
+  box-shadow: inset 5px 0 7px 1px rgba(0, 0, 0, 0.7);
+
+  &:after {
+    width: 30%;
+    height: 7%;
+    content:  "";
+    // background-color: red;
+    position: absolute;
+    left: 66%;
+    top: 91%;
+    border-radius: 40% 60% 15% 85% / 30% 95% 5% 70%;
+    background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, .5) 0%,
+                    rgba(255, 255, 255, .3) 30%,
+                    rgba(112, 132, 200, 0.1) 70%
+    );
+  }
+}
+
+#road {
+  width: 110%;
+  height: 50%;
+  position: absolute;
+  margin: 0 auto;
+  left: -5%;
+  background-color: black;
+  z-index: -2;
+  box-sizing: border-box;
+  outline: 5px solid DarkGoldenRod;
+  outline-offset: -20px;
+}
+/*                 Animations
+-----------------------------------------------*/
+@keyframes shine {
+  0%   {
+    --gradient-size: 40px;
+  }
+  20%  {
+    --gradient-size: 45px;
+  }
+  30%  {
+    --gradient-size: 50px;
+  }
+  40%  {
+    --gradient-size: 55px;
+  }
+  50%  {
+    --gradient-size: 60px;
+  }
+  60%  {
+    --gradient-size: 55px;
+  }
+  80%  {
+    --gradient-size: 50px;
+  }
+  90%  {
+    --gradient-size: 45px;
+  }
+  100% {
+    --gradient-size: 40px;
+  }
+}
